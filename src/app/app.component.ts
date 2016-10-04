@@ -28,6 +28,7 @@ import { AppState } from './app.service';
         <li class="logo"><a [routerLink]=" ['./']" id="logo-container" class="brand-logo">Logo</a></li>
         <li class="bold"><a [routerLink]=" ['./clientes'] ">Clientes</a></li>
         <li class="bold"><a [routerLink]=" ['./historico'] ">Histórico</a></li>
+        <li class="bold"><a [routerLink]=" ['./login'] ">Logout</a></li>
       </ul>
     </header>
 

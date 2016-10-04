@@ -18,6 +18,15 @@ import { Home } from './home';
 import { Clients } from './clients';
 import { History } from './history';
 import { NoContent } from './no-content';
+import { AuthGuard } from './_guards/index';
+import { AuthenticationService, UserService } from './_services/index';
+import { Login } from './login/index';
+
+// used to create fake backend
+import { fakeBackendProvider } from './_helpers/index';
+import { MockBackend, MockConnection } from '@angular/http/testing';
+import { BaseRequestOptions } from '@angular/http';
+
 
 import 'materialize-css';
 import {MaterializeDirective} from 'angular2-materialize';
@@ -39,17 +48,26 @@ const APP_PROVIDERS = [
     History,
     Home,
     NoContent,
+    Login,
     MaterializeDirective
   ],
   imports: [ // import Angular's modules
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true })
+    ROUTES
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    AuthGuard,
+    AuthenticationService,
+    UserService,
+
+    // providers used to create fake backend
+    fakeBackendProvider,
+    MockBackend,
+    BaseRequestOptions
   ]
 })
 export class AppModule {
