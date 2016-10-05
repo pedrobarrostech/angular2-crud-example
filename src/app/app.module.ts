@@ -18,6 +18,7 @@ import { Home } from './home';
 import { Clients } from './clients';
 import { History } from './history';
 import { NoContent } from './no-content';
+import { Menu } from './menu';
 import { AuthGuard } from './_guards/index';
 import { AuthenticationService, UserService } from './_services/index';
 import { Login } from './login/index';
@@ -49,6 +50,7 @@ const APP_PROVIDERS = [
     Home,
     NoContent,
     Login,
+    Menu,
     MaterializeDirective
   ],
   imports: [ // import Angular's modules

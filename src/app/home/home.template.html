@@ -1,13 +1,16 @@
-<div class="container">
-  <h1 class="title">Bem vindo - Administração</h1>
+<menu></menu>
+<main>
+  
+  <div class="container">
+    <h1 class="title">Bem vindo - Administração</h1>
 
-  <div materialize="carousel" [materializeParams]="[{full_width: true}]" class="carousel carousel-slider center" data-indicators="true">
-    <div *ngFor="let item of items" class="carousel-item light-blue darken-2 white-text" href="#one!">
-      <p class="white-text">{{item.name}}</p>
+    <div materialize="carousel" [materializeParams]="[{full_width: true}]" class="carousel carousel-slider center" data-indicators="true">
+      <div *ngFor="let item of items" class="carousel-item light-blue darken-2 white-text" href="#one!">
+        <p class="white-text">{{item.name}}</p>
+      </div>
     </div>
+
+    <hr>
+
   </div>
-
-
-  <hr>
-
-</div>
+</main>

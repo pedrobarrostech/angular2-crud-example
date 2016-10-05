@@ -13,10 +13,13 @@ console.log('`History` component loaded asynchronously');
   styles: [`
   `],
   template: `
-  <div class="container">
-    <h1>History</h1>
-    <p>Test</p>
-  </div>
+  <menu></menu>
+  <main>
+    <div class="container">
+      <h1>History</h1>
+      <p>Test</p>
+    </div>
+  </main>
   `
 })
 export class History {
