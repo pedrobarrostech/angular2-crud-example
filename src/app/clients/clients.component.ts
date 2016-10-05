@@ -10,17 +10,8 @@ console.log('`Clients` component loaded asynchronously');
 
 @Component({
   selector: 'clients',
-  styles: [`
-  `],
-  template: `
-  <menu></menu>
-  <main>
-    <div class="container">
-      <h1>Clients</h1>
-      <p>Test</p>
-    </div>
-  </main>
-  `
+  styleUrls: [ './clients.style.css' ],
+  templateUrl: './clients.template.html'
 })
 export class Clients {
   localState;

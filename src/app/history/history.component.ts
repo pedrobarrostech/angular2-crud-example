@@ -10,17 +10,8 @@ console.log('`History` component loaded asynchronously');
 
 @Component({
   selector: 'history',
-  styles: [`
-  `],
-  template: `
-  <menu></menu>
-  <main>
-    <div class="container">
-      <h1>History</h1>
-      <p>Test</p>
-    </div>
-  </main>
-  `
+  styleUrls: [ './history.style.css' ],
+  templateUrl: './history.template.html'
 })
 export class History {
   localState;
