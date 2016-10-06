@@ -1,52 +1,85 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-/*
- * We're loading this component asynchronously
- * We are using some magic with es6-promise-loader that will wrap the module with a Promise
- * see https://github.com/gdi2290/es6-promise-loader for more info
- */
+
+import { Client } from '../_models/client';
+import { ClientService } from '../_services/index';
+import { Observable } from 'rxjs';
 
 console.log('`Clients` component loaded asynchronously');
 
 @Component({
+  moduleId: module.id,
   selector: 'clients',
+  providers: [
+    ClientService
+  ],
   styleUrls: [ './clients.style.css' ],
   templateUrl: './clients.template.html'
 })
 export class Clients {
   localState;
-  constructor(public route: ActivatedRoute) {
+  sex: string[] = ['Feminino', 'Masculino'];
+  marital_status: string[] = ['Solteiro', 'Casado', 'Divorciado', 'Outros'];
+  client: Client;  
+  powers: string[];
+  submitted: boolean = false;
+  
+  constructor(public route: ActivatedRoute, private clientService: ClientService) {
 
-  }
-
+   }
+  
   ngOnInit() {
-    this.route
-      .data
-      .subscribe((data: any) => {
-        // your resolved data from route
-        this.localState = data.yourData;
-      });
-
-    console.log('hello `Clients` component');
-    // static data that is bundled
-    // var mockData = require('assets/mock-data/mock-data.json');
-    // console.log('mockData', mockData);
-    // if you're working with mock data you can also use http.get('assets/mock-data/mock-data.json')
-    // this.asyncDataWithWebpack();
-  }
-  asyncDataWithWebpack() {
-    // you can also async load mock data with 'es6-promise-loader'
-    // you would do this if you don't want the mock-data bundled
-    // remember that 'es6-promise-loader' is a promise
-    // var asyncMockDataPromiseFactory = require('es6-promise!assets/mock-data/mock-data.json');
-    // setTimeout(() => {
-    //
-    //   let asyncDataPromise = asyncMockDataPromiseFactory();
-    //   asyncDataPromise.then(json => {
-    //     console.log('async mockData', json);
-    //   });
-    //
-    // });
+      this.client = new Client(18, 'Dr IQ', 'Really Smart', 'Chuck Overstreet', 'iq@superhero.com');
+      
   }
 
+  onSubmit()  {
+    console.log(this.clientService.add(this.client));
+    this.submitted = true;
+  }
+
+  create(name) {
+    let client = {name: name};
+    this.clientService.add(client).subscribe(
+       data => {
+         // refresh the list
+         //this.getAll();
+         return true;
+       },
+       error => {
+         console.error("Error saving client!");
+         return Observable.throw(error);
+       }
+    );
+  }
+ 
+  edit(client) {
+    this.clientService.update(client).subscribe(
+       data => {
+         // refresh the list
+         //this.getAll();
+         return true;
+       },
+       error => {
+         console.error("Error saving client!");
+         return Observable.throw(error);
+       }
+    );
+  }
+ 
+  remove(client) {
+    if (confirm("Are you sure you want to delete " + client.name + "?")) {
+      this.clientService.remove(client).subscribe(
+         data => {
+           // refresh the list
+           //this.getAll();
+           return true;
+         },
+         error => {
+           console.error("Error deleting client!");
+           return Observable.throw(error);
+         }
+      );
+    }
+  }
 }

@@ -1,7 +1,116 @@
 <menu></menu>
 <main>
     <div class="container">
-        <h1>Clients</h1>
-        <p>Test</p>
+        <h1>Clientes</h1>
+        <div class="row">
+            <form class="col s12" (ngSubmit)="onSubmit()" >
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="Nome" name="first_name" type="text" [(ngModel)]="client.name"  />
+                        <!-- <!-- <labelfor="first_name">Nome</label> -->
+                    </div>
+                    <div class="input-field col s6">
+                        <input placeholder="Sobrenome" name="last_name" type="text"  [(ngModel)]="client.lastName" />
+                        <!-- <labelfor="last_name">Sobrenome</label> -->
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="RG" name="rg" type="text" [(ngModel)]="client.rg"  />
+                        <!-- <labelfor="rg">RG</label> -->
+                    </div>
+                    <div class="input-field col s6">
+                            <input placeholder="CPF" name="cpf" type="text" [(ngModel)]="client.rg"  />
+                            <!-- <labelfor="cpf">CPF</label> -->
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <!-- <labelfor="marital_status">Estado Civil</label> -->
+                        <select name="marital_status" [(ngModel)]="client.marital_status">
+                             <option *ngFor="let marital_status of marital_status" [value]="marital_status">{{marital_status}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label> Sexo</label>
+                        <p>
+                            <input name="sex" type="radio" name="sex-male" value="M" [(ngModel)]="client.sex"/>
+                            <!-- <labelfor="sex-male">Masculino</label> -->
+                        </p>
+                        <p>
+                            <input name="sex" type="radio" name="sex-female" value="F" [(ngModel)]="client.sex" />
+                            <!-- <labelfor="sexo-female">Feminino</label> -->
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Cidade" name="city" type="text" [(ngModel)]="client.city" />
+                        <!-- <labelfor="city">Cidade</label> -->
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Endereço" name="address" type="text" [(ngModel)]="client.address" />
+                        <!-- <labelfor="address">Endereço</label> -->
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Estado" name="state" type="text" [(ngModel)]="client.state" />
+                        <!-- <labelfor="state">Estado</label> -->
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Telefone/Celular" name="phone" type="text" [(ngModel)]="client.phone" />
+                        <!-- <labelfor="phone">Telefone/Celular</label> -->
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Facebook" name="facebook" type="text" [(ngModel)]="client.facebook" />
+                        <!-- <labelfor="facebook">Facebook</label> -->
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="E-mail" name="email" type="text" [(ngModel)]="client.email" />
+                        <!-- <labelfor="email">E-mail</label> -->
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Data de Nascimento" class="datepicker" name="birthday" type="date" [(ngModel)]="client.birthday" />
+                        <!-- <labelfor="birthday">Data de Nascimento</label> -->
+                    </div>
+                </div> 
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea name="comments" class="materialize-textarea" [(ngModel)]="client.comments" ></textarea>
+                        <!-- <labelfor="comments">Observações</label> -->
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <button type="submit" name="submit" class="waves-effect waves-light btn-large">OK</button>
+                    </div>
+                </div>
+            </form>
+         </div>
     </div>
 </main>
