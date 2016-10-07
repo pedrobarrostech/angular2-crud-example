@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ClientService{
-  url = 'api/client/';
+  url = 'http://localhost:3000/clients/';
   constructor(private http: Http) {
   }
 
@@ -38,6 +38,7 @@ export class ClientService{
 
   private extractData(res: Response) {
     let body = res.json();
+    console.log(res);
     return body.data || { };
   }
   private handleError (error: any) {

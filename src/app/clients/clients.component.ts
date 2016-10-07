@@ -20,8 +20,7 @@ export class Clients {
   localState;
   sex: string[] = ['Feminino', 'Masculino'];
   marital_status: string[] = ['Solteiro', 'Casado', 'Divorciado', 'Outros'];
-  client: Client;  
-  powers: string[];
+  client: Client;
   submitted: boolean = false;
   
   constructor(public route: ActivatedRoute, private clientService: ClientService) {
@@ -34,13 +33,27 @@ export class Clients {
   }
 
   onSubmit()  {
-    console.log(this.clientService.add(this.client));
+    this.create();
     this.submitted = true;
   }
 
-  create(name) {
-    let client = {name: name};
-    this.clientService.add(client).subscribe(
+  create() {
+    this.clientService.add(this.client).subscribe(
+       data => {
+         console.error("Success saving client!");
+         // refresh the list
+         //this.getAll();
+         return true;
+       },
+       error => {
+         console.error("Error saving client!");
+         return Observable.throw(error);
+       }
+    );
+  }
+ 
+  edit() {
+    this.clientService.update(this.client).subscribe(
        data => {
          // refresh the list
          //this.getAll();
@@ -53,23 +66,9 @@ export class Clients {
     );
   }
  
-  edit(client) {
-    this.clientService.update(client).subscribe(
-       data => {
-         // refresh the list
-         //this.getAll();
-         return true;
-       },
-       error => {
-         console.error("Error saving client!");
-         return Observable.throw(error);
-       }
-    );
-  }
- 
-  remove(client) {
-    if (confirm("Are you sure you want to delete " + client.name + "?")) {
-      this.clientService.remove(client).subscribe(
+  remove() {
+    if (confirm("Are you sure you want to delete " + this.client.name + "?")) {
+      this.clientService.remove(this.client).subscribe(
          data => {
            // refresh the list
            //this.getAll();
